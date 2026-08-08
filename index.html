@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>For Chivuuu ❤️</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+
+            font-family: "Segoe UI", sans-serif;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #d9c7d3,
+                    #c9c9df,
+                    #d7ddea
+                );
+
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+
+            padding: 40px 15px;
+
+            overflow-x: hidden;
+            overflow-y: auto;
+
+            color: #403844;
+        }
+
+        .card {
+            width: min(92%, 680px);
+
+            padding: 45px 30px;
+
+            background: rgba(255, 255, 255, 0.78);
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            border-radius: 30px;
+
+            text-align: center;
+
+            box-shadow:
+                0 20px 60px rgba(70, 60, 80, 0.22);
+
+            z-index: 2;
+
+            animation: appear 1.2s ease;
+
+            margin-bottom: 30px;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(35px) scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .heart {
+            font-size: 65px;
+            animation: heartbeat 2s infinite;
+            margin-bottom: 12px;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.08);
+            }
+        }
+
+        h1 {
+            font-size: 38px;
+            margin-bottom: 10px;
+            color: #76627a;
+        }
+
+        .subtitle {
+            font-size: 17px;
+            color: #807080;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .message {
+            font-size: 18px;
+            line-height: 1.9;
+            margin-bottom: 25px;
+        }
+
+        .sad-text {
+            font-size: 18px;
+            line-height: 1.9;
+        }
+
+        .highlight {
+            color: #745b78;
+            font-weight: bold;
+        }
+
+        .important {
+            color: #745b78;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        button {
+            border: none;
+
+            padding: 15px 30px;
+
+            border-radius: 30px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #8d7894,
+                    #b58da8
+                );
+
+            color: white;
+
+            font-size: 16px;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 8px 20px rgba(100, 80, 110, 0.25);
+
+            transition: 0.3s;
+
+            font-family: inherit;
+        }
+
+        button:hover {
+            transform:
+                translateY(-3px)
+                scale(1.04);
+
+            box-shadow:
+                0 12px 25px rgba(100, 80, 110, 0.35);
+        }
+
+        button:active {
+            transform: scale(0.97);
+        }
+
+        #message2 {
+            display: none;
+            margin-top: 30px;
+            animation: fadeIn 0.8s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .note-box {
+            margin-top: 25px;
+
+            padding: 25px;
+
+            border-radius: 22px;
+
+            background:
+                rgba(220, 210, 225, 0.65);
+
+            border:
+                1px solid rgba(120, 100, 130, 0.15);
+
+            line-height: 1.9;
+
+            font-size: 17px;
+        }
+
+        .promise-box {
+            margin-top: 25px;
+
+            padding: 25px;
+
+            border-radius: 22px;
+
+            background:
+                rgba(245, 230, 238, 0.72);
+
+            border:
+                1px solid rgba(150, 100, 130, 0.15);
+
+            line-height: 1.9;
+
+            font-size: 17px;
+        }
+
+        .final-box {
+            margin-top: 28px;
+
+            padding: 28px;
+
+            border-radius: 24px;
+
+            background:
+                rgba(255, 255, 255, 0.65);
+
+            border:
+                1px solid rgba(120, 100, 130, 0.15);
+
+            line-height: 2;
+
+            font-size: 17px;
+        }
+
+        .signature {
+            margin-top: 30px;
+
+            font-size: 19px;
+
+            color: #715b70;
+
+            font-style: italic;
+        }
+
+        .tiny-note {
+            margin-top: 18px;
+
+            font-size: 13px;
+
+            opacity: 0.65;
+        }
+
+        .floating-heart {
+            position: fixed;
+
+            bottom: -50px;
+
+            font-size: 25px;
+
+            opacity: 0.6;
+
+            animation:
+                floatUp
+                linear
+                forwards;
+
+            pointer-events: none;
+
+            z-index: 1;
+        }
+
+        @keyframes floatUp {
+
+            from {
+                transform:
+                    translateY(0)
+                    rotate(0deg);
+
+                opacity: 0.65;
+            }
+
+            to {
+                transform:
+                    translateY(-110vh)
+                    rotate(360deg);
+
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            body {
+                padding: 20px 10px;
+            }
+
+            .card {
+                padding: 35px 20px;
+                border-radius: 25px;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+
+            .heart {
+                font-size: 55px;
+            }
+
+            .message,
+            .sad-text {
+                font-size: 16px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <div class="card">
+
+        <div class="heart">
+            💔
+        </div>
+
+        <h1>
+            Chivuuu...
+        </h1>
+
+        <p class="subtitle">
+            I want you to understand what's actually going on inside me.
+        </p>
+
+
+        <p class="message">
+
+            I know you're angry with me.
+
+            <br><br>
+
+            And I know I have things
+            that I need to change.
+
+            <br><br>
+
+            But there's something
+            I don't think I explained properly.
+
+            <br><br>
+
+            A lot of the times when I corrected you,
+            it wasn't because I thought you were
+            incapable or because I wanted to control you.
+
+            <br><br>
+
+            <span class="important">
+                A lot of it came from my own insecurities.
+            </span>
+
+            <br><br>
+
+            Sometimes I overthink.
+
+            <br>
+
+            Sometimes I get scared.
+
+            <br>
+
+            Sometimes my mind makes things
+            bigger than they actually are.
+
+            <br><br>
+
+            And instead of dealing with those feelings
+            properly, I ended up correcting you.
+
+            <br><br>
+
+            I know that's not fair to you.
+
+        </p>
+
+
+        <button onclick="showMessage()">
+            There's more I want you to know ❤️
+        </button>
+
+
+        <div id="message2">
+
+
+            <p class="sad-text">
+
+                Chivuuu...
+
+                <br><br>
+
+                I don't want to use my insecurities
+                as an excuse for the way I acted.
+
+                <br><br>
+
+                They're my feelings,
+                and I need to learn how to handle them.
+
+                <br><br>
+
+                But I also don't want to pretend
+                that those feelings weren't real.
+
+                <br><br>
+
+                <span class="highlight">
+                    I was genuinely scared sometimes.
+                </span>
+
+                <br><br>
+
+                I overthought things.
+
+                <br>
+
+                I worried.
+
+                <br>
+
+                I felt insecure.
+
+                <br>
+
+                And sometimes I didn't know
+                how to express that properly.
+
+            </p>
+
+
+            <div class="note-box">
+
+                <span class="important">
+                    I wasn't trying to make you
+                    feel like you weren't good enough.
+                </span>
+
+                <br><br>
+
+                I was dealing with feelings inside myself
+                that I didn't know how to handle.
+
+                <br><br>
+
+                And I'm sorry that those feelings
+                sometimes came out as me correcting you.
+
+            </div>
+
+
+            <div class="promise-box">
+
+                <span class="important">
+                    So I'm going to work on myself.
+                </span>
+
+                <br><br>
+
+                I'm going to stop constantly correcting you.
+
+                <br><br>
+
+                I'm going to think before I react.
+
+                <br><br>
+
+                When I feel insecure,
+                I'll try to communicate it
+                instead of putting it on you.
+
+                <br><br>
+
+                And when we're together,
+                I want you to feel comfortable
+                being yourself around me.
+
+            </div>
+
+
+            <p class="sad-text" style="margin-top: 30px;">
+
+                But Chivuuu...
+
+                <br><br>
+
+                There's another side of this
+                that I really need you to understand.
+
+                <br><br>
+
+                <span class="important">
+                    My feelings matter too.
+                </span>
+
+                <br><br>
+
+                I know you're hurt.
+
+                <br>
+
+                I know you're angry.
+
+                <br>
+
+                And I respect that.
+
+                <br><br>
+
+                But when you're distant from me,
+                or when I feel like you don't want
+                me around...
+
+                <br><br>
+
+                <span class="highlight">
+                    I get hurt too.
+                </span>
+
+                <br><br>
+
+                I might not always show it.
+
+                <br>
+
+                I might even stay quiet.
+
+                <br>
+
+                But I feel it.
+
+                <br><br>
+
+                I miss you.
+
+                <br>
+
+                I miss talking to you.
+
+                <br>
+
+                I miss feeling close to you.
+
+            </p>
+
+
+            <div class="note-box">
+
+                I don't want this to become
+                a situation where only one person's
+                feelings matter.
+
+                <br><br>
+
+                I want to hear your feelings.
+
+                <br>
+
+                I want you to hear mine too.
+
+                <br><br>
+
+                I can admit when I'm wrong.
+
+                <br>
+
+                I can apologize.
+
+                <br>
+
+                I can work on my insecurities.
+
+                <br><br>
+
+                But I also need to know that
+                <span class="highlight">
+                    my feelings are allowed to exist.
+                </span>
+
+            </div>
+
+
+            <p class="sad-text" style="margin-top: 30px;">
+
+                And about being around you...
+
+                <br><br>
+
+                I'm going to stop trying to correct
+                every little thing.
+
+                <br><br>
+
+                If something doesn't really matter,
+                I'll let it go.
+
+                <br><br>
+
+                If I'm feeling insecure,
+                I'll deal with that feeling
+                instead of making it your problem.
+
+                <br><br>
+
+                And if I need to say something important,
+                I'll try to explain how I feel
+                instead of simply correcting you.
+
+                <br><br>
+
+                <span class="important">
+                    I don't want to control you.
+                </span>
+
+                <br><br>
+
+                I want to understand you.
+
+            </p>
+
+
+            <div class="final-box">
+
+                I'm not making this page
+                to make you feel guilty.
+
+                <br><br>
+
+                I'm making it because
+                I don't know how to say all of this
+                properly when I'm emotional.
+
+                <br><br>
+
+                I know I have insecurities.
+
+                <br>
+
+                I know I need to work on them.
+
+                <br>
+
+                And I will.
+
+                <br><br>
+
+                But please understand...
+
+                <br><br>
+
+                <span class="important">
+                    I'm a person with feelings too.
+                </span>
+
+                <br><br>
+
+                I can be wrong
+                and still be hurt.
+
+                <br>
+
+                I can apologize
+                and still feel sad.
+
+                <br>
+
+                I can work on myself
+                and still need to feel loved.
+
+                <br><br>
+
+                Both things can be true.
+
+            </div>
+
+
+            <p class="sad-text" style="margin-top: 30px;">
+
+                I don't expect you to forgive me
+                immediately.
+
+                <br><br>
+
+                I don't expect everything
+                to suddenly become okay.
+
+                <br><br>
+
+                I just hope that someday
+                we can both understand
+                each other's side.
+
+                <br><br>
+
+                Because I don't want us
+                to fight against each other.
+
+                <br>
+
+                I want us to fight
+                <span class="highlight">
+                    for each other.
+                </span>
+
+                <br><br>
+
+                I love you, Chivuuu.
+
+                <br><br>
+
+                And I'm sorry.
+
+            </p>
+
+
+            <div class="signature">
+
+                I miss you.
+
+                <br><br>
+
+                — Aryan ❤️
+
+            </div>
+
+        </div>
+
+
+        <div class="tiny-note">
+            made by Aryan with a heavy heart ❤️
+        </div>
+
+    </div>
+
+
+    <script>
+
+        function showMessage() {
+
+            const message =
+                document.getElementById("message2");
+
+            message.style.display = "block";
+
+            setTimeout(() => {
+
+                message.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+            }, 200);
+
+            for (let i = 0; i < 35; i++) {
+                createHeart();
+            }
+        }
+
+
+        function createHeart() {
+
+            const heart =
+                document.createElement("div");
+
+            const hearts = [
+                "💔",
+                "❤️",
+                "🥀",
+                "💕",
+                "💗",
+                "✨"
+            ];
+
+            heart.className =
+                "floating-heart";
+
+            heart.innerText =
+                hearts[
+                    Math.floor(
+                        Math.random() * hearts.length
+                    )
+                ];
+
+            heart.style.left =
+                Math.random() * 100 + "vw";
+
+            heart.style.animationDuration =
+                (3 + Math.random() * 4) + "s";
+
+            heart.style.fontSize =
+                (18 + Math.random() * 25) + "px";
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 7000);
+        }
+
+
+        setInterval(() => {
+            createHeart();
+        }, 1300);
+
+    </script>
+
+</body>
+
+</html>
