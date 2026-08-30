@@ -3,206 +3,329 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>I'm Sorry ❤️</title>
+<title>After All This Time — Aditi</title>
+
 <style>
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    min-height: 100vh;
-    font-family: Inter, system-ui, -apple-system, Segoe UI, sans-serif;
-    color: #fff;
-    background:
-      radial-gradient(circle at 20% 20%, rgba(255,120,160,.18), transparent 30%),
-      radial-gradient(circle at 80% 80%, rgba(160,100,255,.18), transparent 30%),
-      #100b18;
-    overflow-x: hidden;
-  }
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
 
-  .hearts span {
-    position: fixed;
-    bottom: -30px;
-    font-size: 20px;
-    opacity: .5;
-    animation: float 9s linear infinite;
-    pointer-events: none;
-  }
-  .hearts span:nth-child(1){left:8%;animation-delay:0s}
-  .hearts span:nth-child(2){left:23%;animation-delay:2s}
-  .hearts span:nth-child(3){left:42%;animation-delay:5s}
-  .hearts span:nth-child(4){left:67%;animation-delay:1s}
-  .hearts span:nth-child(5){left:86%;animation-delay:4s}
+    body {
+        height: 100vh;
+        overflow: hidden;
+        font-family: Georgia, serif;
+        background: #090514;
+        color: white;
+    }
 
-  @keyframes float {
-    to { transform: translateY(-115vh) rotate(25deg); opacity: 0; }
-  }
+    .scene {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background:
+            radial-gradient(circle at 50% 35%, #5b315f 0%, #21152f 35%, #090514 75%);
+    }
 
-  .wrap {
-    width: min(920px, 92%);
-    margin: auto;
-    padding: 70px 0;
-  }
+    /* Moon */
+    .moon {
+        position: absolute;
+        top: 10%;
+        right: 13%;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: #fff4d6;
+        box-shadow: 0 0 45px #fff4d6;
+    }
 
-  .card {
-    position: relative;
-    padding: clamp(30px, 6vw, 70px);
-    border: 1px solid rgba(255,255,255,.12);
-    border-radius: 32px;
-    background: rgba(255,255,255,.07);
-    backdrop-filter: blur(18px);
-    box-shadow: 0 30px 100px rgba(0,0,0,.4);
-    text-align: center;
-  }
+    /* Stars */
+    .stars {
+        position: absolute;
+        inset: 0;
+        background-image:
+            radial-gradient(circle, white 1px, transparent 1px),
+            radial-gradient(circle, #ffd9ec 1px, transparent 1px);
+        background-size: 90px 90px, 140px 140px;
+        background-position: 10px 20px, 50px 70px;
+        opacity: .65;
+    }
 
-  .heart {
-    width: 82px;
-    height: 82px;
-    margin: 0 auto 25px;
-    display: grid;
-    place-items: center;
-    border-radius: 50%;
-    background: linear-gradient(135deg,#ff5c8a,#b44cff);
-    font-size: 39px;
-    box-shadow: 0 12px 45px rgba(255,80,140,.3);
-    animation: pulse 2s ease-in-out infinite;
-  }
-  @keyframes pulse {
-    50% { transform: scale(1.08); }
-  }
+    /* Ground */
+    .ground {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 30%;
+        background: linear-gradient(#15101e, #050309);
+        clip-path: polygon(0 35%, 15% 20%, 30% 35%, 45% 15%,
+                           60% 32%, 75% 18%, 100% 35%, 100% 100%, 0 100%);
+    }
 
-  .eyebrow {
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    font-size: 12px;
-    opacity: .65;
-    margin-bottom: 14px;
-  }
+    .intro {
+        position: relative;
+        z-index: 5;
+        text-align: center;
+        max-width: 700px;
+        padding: 30px;
+        animation: fadeIn 2s ease;
+    }
 
-  h1 {
-    margin: 0;
-    font-size: clamp(42px, 9vw, 82px);
-    line-height: .95;
-    background: linear-gradient(90deg,#fff,#ffb2ca,#d5a5ff);
-    -webkit-background-clip: text;
-    color: transparent;
-  }
+    .date {
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        font-size: 12px;
+        opacity: .65;
+        margin-bottom: 20px;
+    }
 
-  .subtitle {
-    max-width: 650px;
-    margin: 24px auto 0;
-    font-size: 18px;
-    line-height: 1.8;
-    color: #e8dfe9;
-  }
+    h1 {
+        font-size: clamp(42px, 8vw, 90px);
+        font-weight: normal;
+        margin-bottom: 15px;
+        text-shadow: 0 0 25px rgba(255,180,220,.5);
+    }
 
-  .message {
-    margin: 42px auto 0;
-    max-width: 680px;
-    text-align: left;
-    padding: 28px;
-    border-radius: 22px;
-    background: rgba(0,0,0,.18);
-    border: 1px solid rgba(255,255,255,.08);
-  }
+    .subtitle {
+        font-size: 20px;
+        color: #e8cddd;
+        min-height: 60px;
+        line-height: 1.6;
+    }
 
-  .message p {
-    margin: 0 0 18px;
-    line-height: 1.85;
-    color: #eee5ee;
-  }
-  .message p:last-child { margin-bottom: 0; }
+    button {
+        margin-top: 35px;
+        padding: 14px 30px;
+        border: 1px solid rgba(255,255,255,.4);
+        border-radius: 30px;
+        background: rgba(255,255,255,.08);
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: .3s;
+        backdrop-filter: blur(10px);
+    }
 
-  .promise {
-    margin-top: 28px;
-    padding: 20px;
-    border-radius: 18px;
-    background: linear-gradient(135deg, rgba(255,92,138,.12), rgba(180,76,255,.10));
-    color: #ffd9e5;
-    font-weight: 600;
-  }
+    button:hover {
+        transform: scale(1.08);
+        background: rgba(255,255,255,.18);
+        box-shadow: 0 0 30px rgba(255,170,220,.35);
+    }
 
-  button {
-    margin-top: 34px;
-    border: 0;
-    padding: 15px 25px;
-    border-radius: 999px;
-    color: white;
-    font-size: 15px;
-    font-weight: 700;
-    cursor: pointer;
-    background: linear-gradient(90deg,#ff5c8a,#a85cff);
-    box-shadow: 0 10px 30px rgba(190,80,160,.25);
-    transition: transform .2s, box-shadow .2s;
-  }
-  button:hover { transform: translateY(-2px); box-shadow: 0 14px 38px rgba(190,80,160,.4); }
+    /* Meeting scene */
+    .meeting {
+        display: none;
+        position: absolute;
+        inset: 0;
+        z-index: 10;
+        align-items: center;
+        justify-content: center;
+        background:
+            radial-gradient(circle at 50% 45%, #70415d, #120b1b 65%);
+    }
 
-  #reply {
-    margin-top: 20px;
-    min-height: 28px;
-    color: #ffd6e4;
-    font-weight: 600;
-  }
+    .meeting.active {
+        display: flex;
+        animation: fadeIn 2s ease;
+    }
 
-  footer {
-    margin-top: 35px;
-    opacity: .5;
-    font-size: 13px;
-  }
+    .person {
+        position: absolute;
+        bottom: 18%;
+        text-align: center;
+    }
+
+    .you {
+        left: 17%;
+    }
+
+    .aditi {
+        right: 17%;
+    }
+
+    .silhouette {
+        width: 100px;
+        height: 170px;
+        margin: auto;
+        position: relative;
+    }
+
+    .head {
+        width: 55px;
+        height: 55px;
+        background: #15101a;
+        border-radius: 50%;
+        margin: auto;
+    }
+
+    .body {
+        width: 100px;
+        height: 120px;
+        background: #15101a;
+        border-radius: 50px 50px 0 0;
+        margin-top: -5px;
+    }
+
+    .person-name {
+        margin-top: 15px;
+        font-size: 18px;
+        letter-spacing: 2px;
+    }
+
+    .message {
+        position: absolute;
+        top: 14%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 700px;
+        text-align: center;
+        font-size: clamp(22px, 4vw, 38px);
+        line-height: 1.5;
+        color: #ffe9f4;
+    }
+
+    .heart {
+        position: absolute;
+        left: 50%;
+        bottom: 38%;
+        transform: translateX(-50%);
+        font-size: 35px;
+        opacity: 0;
+    }
+
+    .heart.show {
+        animation: heartFloat 3s ease forwards;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: scale(.97); }
+        to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes heartFloat {
+        0% { opacity: 0; transform: translate(-50%, 30px) scale(.5); }
+        30% { opacity: 1; }
+        100% {
+            opacity: 0;
+            transform: translate(-50%, -100px) scale(1.5);
+        }
+    }
+
+    @media (max-width: 600px) {
+        .you { left: 7%; }
+        .aditi { right: 7%; }
+
+        .silhouette {
+            transform: scale(.75);
+        }
+    }
 </style>
 </head>
+
 <body>
-<div class="hearts">
-  <span>♥</span><span>♡</span><span>♥</span><span>♡</span><span>♥</span>
-</div>
 
-<main class="wrap">
-  <section class="card">
-    <div class="heart">❤️</div>
-    <div class="eyebrow">A little something from me to you</div>
-    <h1>I'm Sorry.</h1>
+<div class="scene">
 
-    <p class="subtitle">
-      I know that simply saying “sorry” can't magically fix everything,
-      but I still want you to know how genuinely sorry I am.
-    </p>
+    <div class="stars"></div>
+    <div class="moon"></div>
+    <div class="ground"></div>
 
-    <div class="message">
-      <p>
-        I’m sorry for the things I did that hurt you, for the moments when
-        I could have understood you better, and for anything I made you
-        feel that you didn't deserve.
-      </p>
+    <div class="intro">
+        <div class="date">A moment we waited for</div>
 
-      <p>
-        I don't want to make excuses or turn this into a list of reasons.
-        I just want to take responsibility and tell you that your feelings
-        matter to me.
-      </p>
+        <h1>Aditi</h1>
 
-      <p>
-        You mean a lot to me, and I hate knowing that my actions became a
-        reason for you to feel hurt or disappointed. If I could go back,
-        there are things I would do differently.
-      </p>
+        <div class="subtitle" id="typing"></div>
 
-      <div class="promise">
-        I can't promise I'll never make mistakes again.
-        I can promise that I'll try harder to learn from them,
-        listen better, and treat your heart with the care it deserves.
-      </div>
+        <button onclick="meet()">Walk to her</button>
     </div>
 
-    <button onclick="showMessage()">One more thing ❤️</button>
-    <div id="reply"></div>
+</div>
 
-    <footer>Made with a little courage, a lot of regret, and genuine love.</footer>
-  </section>
-</main>
+<div class="meeting" id="meeting">
+
+    <div class="message" id="message">
+        After all this time...
+    </div>
+
+    <div class="person you">
+        <div class="silhouette">
+            <div class="head"></div>
+            <div class="body"></div>
+        </div>
+        <div class="person-name">YOU</div>
+    </div>
+
+    <div class="person aditi">
+        <div class="silhouette">
+            <div class="head"></div>
+            <div class="body"></div>
+        </div>
+        <div class="person-name">ADITI</div>
+    </div>
+
+    <div class="heart" id="heart">♥</div>
+
+</div>
 
 <script>
-function showMessage() {
-  const el = document.getElementById("reply");
-  el.textContent = "I don't expect forgiveness instantly. I just wanted you to know that I'm truly sorry. ❤️";
+
+const text =
+    "Some people leave your life for a while... " +
+    "but somehow, your heart never forgets where they belong.";
+
+let i = 0;
+
+function typeWriter() {
+    if (i < text.length) {
+        document.getElementById("typing").textContent += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 45);
+    }
 }
+
+typeWriter();
+
+function meet() {
+
+    document.querySelector(".scene").style.display = "none";
+
+    const meeting = document.getElementById("meeting");
+    meeting.classList.add("active");
+
+    setTimeout(() => {
+        document.getElementById("message").textContent =
+            "And then... there she was. Aditi.";
+
+    }, 1500);
+
+    setTimeout(() => {
+        document.getElementById("message").textContent =
+            "For a moment, the years between you disappeared.";
+
+    }, 4000);
+
+    setTimeout(() => {
+        document.getElementById("message").textContent =
+            "Some reunions don't need words.";
+
+        document.getElementById("heart").classList.add("show");
+
+    }, 7000);
+
+    setTimeout(() => {
+        document.getElementById("message").textContent =
+            "“I missed you.”";
+
+    }, 10000);
+}
+
 </script>
+
 </body>
 </html>
