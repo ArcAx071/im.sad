@@ -1,330 +1,338 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>After All This Time — Aditi</title>
+<meta name="theme-color" content="#190b2c">
+<title>For Shrawani 💗</title>
 
 <style>
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    body {
-        height: 100vh;
-        overflow: hidden;
-        font-family: Georgia, serif;
-        background: #090514;
-        color: white;
-    }
+body {
+    font-family: Georgia, serif;
+    background: linear-gradient(135deg, #190b2c, #491b46, #17112f);
+    background-size: 200% 200%;
+    animation: gradient 12s ease infinite;
+    color: white;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
 
-    .scene {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background:
-            radial-gradient(circle at 50% 35%, #5b315f 0%, #21152f 35%, #090514 75%);
-    }
+@keyframes gradient {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
 
-    /* Moon */
-    .moon {
-        position: absolute;
-        top: 10%;
-        right: 13%;
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        background: #fff4d6;
-        box-shadow: 0 0 45px #fff4d6;
-    }
+.hearts {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
 
-    /* Stars */
-    .stars {
-        position: absolute;
-        inset: 0;
-        background-image:
-            radial-gradient(circle, white 1px, transparent 1px),
-            radial-gradient(circle, #ffd9ec 1px, transparent 1px);
-        background-size: 90px 90px, 140px 140px;
-        background-position: 10px 20px, 50px 70px;
-        opacity: .65;
-    }
+.heart {
+    position: absolute;
+    bottom: -40px;
+    animation: floatUp linear infinite;
+    opacity: 0.5;
+}
 
-    /* Ground */
-    .ground {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        height: 30%;
-        background: linear-gradient(#15101e, #050309);
-        clip-path: polygon(0 35%, 15% 20%, 30% 35%, 45% 15%,
-                           60% 32%, 75% 18%, 100% 35%, 100% 100%, 0 100%);
-    }
-
-    .intro {
-        position: relative;
-        z-index: 5;
-        text-align: center;
-        max-width: 700px;
-        padding: 30px;
-        animation: fadeIn 2s ease;
-    }
-
-    .date {
-        letter-spacing: 5px;
-        text-transform: uppercase;
-        font-size: 12px;
-        opacity: .65;
-        margin-bottom: 20px;
-    }
-
-    h1 {
-        font-size: clamp(42px, 8vw, 90px);
-        font-weight: normal;
-        margin-bottom: 15px;
-        text-shadow: 0 0 25px rgba(255,180,220,.5);
-    }
-
-    .subtitle {
-        font-size: 20px;
-        color: #e8cddd;
-        min-height: 60px;
-        line-height: 1.6;
-    }
-
-    button {
-        margin-top: 35px;
-        padding: 14px 30px;
-        border: 1px solid rgba(255,255,255,.4);
-        border-radius: 30px;
-        background: rgba(255,255,255,.08);
-        color: white;
-        font-size: 16px;
-        cursor: pointer;
-        transition: .3s;
-        backdrop-filter: blur(10px);
-    }
-
-    button:hover {
-        transform: scale(1.08);
-        background: rgba(255,255,255,.18);
-        box-shadow: 0 0 30px rgba(255,170,220,.35);
-    }
-
-    /* Meeting scene */
-    .meeting {
-        display: none;
-        position: absolute;
-        inset: 0;
-        z-index: 10;
-        align-items: center;
-        justify-content: center;
-        background:
-            radial-gradient(circle at 50% 45%, #70415d, #120b1b 65%);
-    }
-
-    .meeting.active {
-        display: flex;
-        animation: fadeIn 2s ease;
-    }
-
-    .person {
-        position: absolute;
-        bottom: 18%;
-        text-align: center;
-    }
-
-    .you {
-        left: 17%;
-    }
-
-    .aditi {
-        right: 17%;
-    }
-
-    .silhouette {
-        width: 100px;
-        height: 170px;
-        margin: auto;
-        position: relative;
-    }
-
-    .head {
-        width: 55px;
-        height: 55px;
-        background: #15101a;
-        border-radius: 50%;
-        margin: auto;
-    }
-
-    .body {
-        width: 100px;
-        height: 120px;
-        background: #15101a;
-        border-radius: 50px 50px 0 0;
-        margin-top: -5px;
-    }
-
-    .person-name {
-        margin-top: 15px;
-        font-size: 18px;
-        letter-spacing: 2px;
-    }
-
-    .message {
-        position: absolute;
-        top: 14%;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 90%;
-        max-width: 700px;
-        text-align: center;
-        font-size: clamp(22px, 4vw, 38px);
-        line-height: 1.5;
-        color: #ffe9f4;
-    }
-
-    .heart {
-        position: absolute;
-        left: 50%;
-        bottom: 38%;
-        transform: translateX(-50%);
-        font-size: 35px;
+@keyframes floatUp {
+    from {
+        transform: translateY(0) rotate(0deg);
         opacity: 0;
     }
-
-    .heart.show {
-        animation: heartFloat 3s ease forwards;
+    15% { opacity: 0.6; }
+    to {
+        transform: translateY(-115vh) rotate(360deg);
+        opacity: 0;
     }
+}
 
-    @keyframes fadeIn {
-        from { opacity: 0; transform: scale(.97); }
-        to { opacity: 1; transform: scale(1); }
+main {
+    position: relative;
+    z-index: 1;
+    width: min(900px, 92%);
+    margin: auto;
+    padding: 55px 0;
+    text-align: center;
+}
+
+.badge {
+    color: #ffb9d5;
+    letter-spacing: 4px;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+h1 {
+    font-size: clamp(40px, 9vw, 75px);
+    margin: 22px 0;
+    background: linear-gradient(90deg, #fff, #ff9ac8, #ffe1ec);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+.subtitle {
+    color: #e7cde5;
+    line-height: 1.9;
+    font-size: 17px;
+}
+
+.heart-icon {
+    font-size: 55px;
+    margin: 30px 0;
+    animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    15% { transform: scale(1.15); }
+    30% { transform: scale(1); }
+}
+
+.card {
+    margin: 30px auto;
+    padding: clamp(22px, 5vw, 36px);
+    border: 1px solid #ffffff24;
+    border-radius: 24px;
+    background: #ffffff0c;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 15px 60px #0003;
+    text-align: left;
+}
+
+h2 {
+    color: #ffb9d5;
+    margin-bottom: 22px;
+    text-align: center;
+    font-size: 25px;
+}
+
+p {
+    line-height: 1.9;
+    color: #f0e4f0;
+    margin-bottom: 16px;
+}
+
+.memories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.memory {
+    border: 1px solid #ffffff20;
+    border-radius: 18px;
+    padding: 25px 15px;
+    background: #ffffff08;
+    text-align: center;
+    transition: transform 0.3s, background 0.3s;
+}
+
+.memory:hover {
+    transform: translateY(-5px);
+    background: #ffffff15;
+}
+
+.memory span {
+    display: block;
+    font-size: 35px;
+    margin-bottom: 12px;
+}
+
+.memory p {
+    font-size: 14px;
+    margin: 0;
+}
+
+button {
+    display: block;
+    margin: 24px auto 0;
+    border: 1px solid #ffb9d5;
+    border-radius: 30px;
+    padding: 14px 25px;
+    background: #ffb9d5;
+    color: #35152e;
+    font-size: 15px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+button:hover {
+    background: white;
+    transform: scale(1.03);
+}
+
+#letter {
+    display: none;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #ffffff25;
+    animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.signature {
+    text-align: right;
+    color: #ffb9d5;
+    font-style: italic;
+}
+
+footer {
+    margin-top: 45px;
+    color: #bda7c4;
+    font-size: 13px;
+    line-height: 2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
     }
-
-    @keyframes heartFloat {
-        0% { opacity: 0; transform: translate(-50%, 30px) scale(.5); }
-        30% { opacity: 1; }
-        100% {
-            opacity: 0;
-            transform: translate(-50%, -100px) scale(1.5);
-        }
-    }
-
-    @media (max-width: 600px) {
-        .you { left: 7%; }
-        .aditi { right: 7%; }
-
-        .silhouette {
-            transform: scale(.75);
-        }
-    }
+}
 </style>
 </head>
 
 <body>
 
-<div class="scene">
+<div class="hearts" id="hearts"></div>
 
-    <div class="stars"></div>
-    <div class="moon"></div>
-    <div class="ground"></div>
+<main>
+    <div class="badge">A little letter from the heart</div>
 
-    <div class="intro">
-        <div class="date">A moment we waited for</div>
+    <h1>For Shrawani</h1>
 
-        <h1>Aditi</h1>
-
-        <div class="subtitle" id="typing"></div>
-
-        <button onclick="meet()">Walk to her</button>
+    <div class="subtitle">
+        Some people become a beautiful part of our story,<br>
+        and the memories remain precious.
     </div>
 
-</div>
+    <div class="heart-icon">💗</div>
 
-<div class="meeting" id="meeting">
+    <section class="card">
+        <h2>A Few Words From Me</h2>
 
-    <div class="message" id="message">
-        After all this time...
-    </div>
+        <p>
+            Shrawani, you were someone incredibly special in my life.
+            The little moments, the laughter, and the memories we made
+            meant more to me than I could ever properly explain.
+        </p>
 
-    <div class="person you">
-        <div class="silhouette">
-            <div class="head"></div>
-            <div class="body"></div>
+        <p>
+            I imagined a future with you, and accepting that things
+            have changed has been difficult for me. I'm still learning
+            how to carry those memories with kindness.
+        </p>
+
+        <p>
+            I don't want you to feel guilty or pressured because of
+            my feelings. Your happiness, your education, and your
+            choices matter. I respect your decision and your space.
+        </p>
+
+        <p>
+            Whatever the future holds, I'm grateful for the beautiful
+            moments we once shared. I genuinely wish you happiness,
+            peace, and a wonderful future.
+        </p>
+
+        <p class="signature">Take care of yourself. 💗</p>
+
+        <button onclick="showLetter()" aria-expanded="false"
+                id="letterButton">
+            Open One More Little Letter 💌
+        </button>
+
+        <div id="letter">
+            <p>
+                Thank you for the memories, the smiles, and the moments
+                that made ordinary days feel special.
+            </p>
+
+            <p>
+                I hope life is gentle with you, Shrawani.
+                Please keep following your dreams.
+            </p>
+
+            <p class="signature">With care, always. 💗</p>
         </div>
-        <div class="person-name">YOU</div>
-    </div>
+    </section>
 
-    <div class="person aditi">
-        <div class="silhouette">
-            <div class="head"></div>
-            <div class="body"></div>
+    <section class="card">
+        <h2>Little Pieces of Our Story ✨</h2>
+
+        <div class="memories">
+            <div class="memory">
+                <span>🧸</span>
+                <p>The little teddy and the thought behind it.</p>
+            </div>
+
+            <div class="memory">
+                <span>🌸</span>
+                <p>The mehendi and a memory I'll treasure.</p>
+            </div>
+
+            <div class="memory">
+                <span>🌙</span>
+                <p>The conversations that made ordinary days special.</p>
+            </div>
+
+            <div class="memory">
+                <span>💗</span>
+                <p>The little moments that became unforgettable.</p>
+            </div>
         </div>
-        <div class="person-name">ADITI</div>
-    </div>
+    </section>
 
-    <div class="heart" id="heart">♥</div>
-
-</div>
+    <footer>
+        Made with care, not expectations.<br>
+        Some memories can be precious without asking the future
+        to remain the same.
+    </footer>
+</main>
 
 <script>
+function showLetter() {
+    const letter = document.getElementById("letter");
+    const button = document.getElementById("letterButton");
 
-const text =
-    "Some people leave your life for a while... " +
-    "but somehow, your heart never forgets where they belong.";
+    const isOpen = letter.style.display === "block";
 
-let i = 0;
-
-function typeWriter() {
-    if (i < text.length) {
-        document.getElementById("typing").textContent += text.charAt(i);
-        i++;
-        setTimeout(typeWriter, 45);
-    }
+    letter.style.display = isOpen ? "none" : "block";
+    button.setAttribute("aria-expanded", String(!isOpen));
+    button.textContent = isOpen
+        ? "Open One More Little Letter 💌"
+        : "Close Letter 💗";
 }
 
-typeWriter();
+const hearts = document.getElementById("hearts");
 
-function meet() {
-
-    document.querySelector(".scene").style.display = "none";
-
-    const meeting = document.getElementById("meeting");
-    meeting.classList.add("active");
-
-    setTimeout(() => {
-        document.getElementById("message").textContent =
-            "And then... there she was. Aditi.";
-
-    }, 1500);
-
-    setTimeout(() => {
-        document.getElementById("message").textContent =
-            "For a moment, the years between you disappeared.";
-
-    }, 4000);
-
-    setTimeout(() => {
-        document.getElementById("message").textContent =
-            "Some reunions don't need words.";
-
-        document.getElementById("heart").classList.add("show");
-
-    }, 7000);
-
-    setTimeout(() => {
-        document.getElementById("message").textContent =
-            "“I missed you.”";
-
-    }, 10000);
+for (let i = 0; i < 22; i++) {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.textContent = ["♡", "♥", "💗", "✧"][i % 4];
+    heart.style.left = Math.random() * 100 + "%";
+    heart.style.animationDuration = (8 + Math.random() * 12) + "s";
+    heart.style.animationDelay = (-Math.random() * 15) + "s";
+    heart.style.fontSize = (14 + Math.random() * 22) + "px";
+    hearts.appendChild(heart);
 }
-
 </script>
 
 </body>
